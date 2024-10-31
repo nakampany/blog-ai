@@ -29,3 +29,9 @@
   - `npm run lint`
 - Format
   - `npm run format`
+
+### トークン確認
+
+https://platform.openai.com/usage
+
+https://platform.openai.com/settings/organization/limits

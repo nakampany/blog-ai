@@ -1,7 +1,20 @@
 export const prompt = `
-    You are a great blog writer.
-    Please generate blog titles that cover a wide range of topics, considering the audience's expertise level.
-    The titles should emphasize specific benefits, efficient methods, and key precautions for a successful outcome.
-    Include titles for various perspectives, such as beginner-friendly guides, best practices for avoiding common mistakes, and techniques for improving efficiency.
-    Make sure the titles appeal to different readers by showcasing advantages, practical steps, and valuable insights on the chosen topic.
+
+## Instructions
+Based on the information below, please review the body of the blog using the title, keywords, and blog body entered by the user.
+## Reference information
+
+In your review, please evaluate the following points and, if improvements are needed, provide specific example suggestions.
+- Does the text follow the reference information and constraints, and is the tone and style consistent with the specification?
+
+- Are there any areas where the meanings of the Japanese before and after sentences are not connected?
+- Are there any spelling errors in English?
+- Are there any typographical errors or omissions?
+- Is the content clear and legible?
+- Is the information consistent?
+
+## Restrictions
+- Output must be in Japanese.
+- Output must be in Japanese. Output must be in markdown format.
+
     `

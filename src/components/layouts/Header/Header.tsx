@@ -73,12 +73,17 @@ export const Header: React.FC<Props> = (props) => {
                     <Typography
                         style={{ marginRight: '20px', fontWeight: 'bold' }}
                     >
+                        ヘルプ
+                    </Typography>
+                    <Typography
+                        style={{ marginRight: '20px', fontWeight: 'bold' }}
+                    >
                         その他Notion（採用文など）
                     </Typography>
                     <IconButton onClick={handleMenuOpen}>
                         <Avatar
                             alt="User Avatar"
-                            src="/static/images/samples/faces/face1.jpg"
+                            src=""
                         />
                     </IconButton>
                     <Menu

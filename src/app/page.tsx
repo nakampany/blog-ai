@@ -38,15 +38,14 @@ export default function Home() {
                         animation: 'fadeIn 3s ease-in-out'
                     }}
                 >
-                    タイトル生成、記事概要生成、記事のリライトを行うことができます！
-                    <br className="font-bold" />
-                    TODO：タスク一覧
-                    <br />- プロンプトを頑張る
-                    <br />- デザインを考え、CSSを整える
-                    <br />- 事前学習を実装
-                    <br />- ローカルストレージに保存
-                    <br />- デプロイ
-                    <br />- ログイン・認証機能
+                    {/* タイトル生成、記事概要生成、記事のリライトを行うことができます！ */}
+                    <br />
+                    TODO：タスク一覧（やりたいことリスト）
+                    <br />1. プロンプトを頑張り、実用的なものにする
+                    <br />2. デザインを考え、レイアウトを整える
+                    <br />3. 事前学習機能を実装
+                    <br />4. ローカルストレージのバグを修正
+                    <br />5. ログイン・認証機能
                 </Typography>
                 <Button
                     href="/TitleGeneration"
@@ -64,7 +63,7 @@ export default function Home() {
                         }
                     }}
                 >
-                    ブログを書こう！
+                    生成AIを使ってブログを書く
                 </Button>
             </Container>
         </Box>

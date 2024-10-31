@@ -24,8 +24,7 @@ const Page: React.FC = () => {
         <main className="min-h-screen p-12">
             <h1 className="text-center text-2xl mb-8 font-bold">自由入力</h1>
             <p>
-                以下のフォームにブログの
-                タイトル、キーワード、本文を入力してください
+                以下のフォームに文章を入力してください
             </p>
 
             <BodyInput.Component body={body} setBody={setBody} />

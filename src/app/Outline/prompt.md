@@ -1,25 +1,25 @@
-export const prompt = `
-## Instructions
+## 指示
 
-Based on the information below, please suggest a headline for the blog, using the title and keywords entered by the user.
+以下の情報をもとに、ユーザーが入力したタイトル、キーワードを使って、ブログの見出しを提案してください。
 
-## References
+## 参考情報
 
-- Create headings that follow the main theme contained in the title, with each section detailing the content to be covered in detail.
-- Keywords include important words that you want to use in your headings.
-- Adjust the number of sections and heading level accordingly, keeping in mind the overall flow of the article.
+- タイトルに含まれる主要テーマに沿って、各セクションで詳しく説明する内容の見出しを作成します。
+- キーワードには、見出しに使いたい重要な言葉が含まれます。
+- セクション数や見出しレベルは、記事全体の流れを意識して適宜調整します。
 
-## Restrictions
+## 制約事項
 
-- Output must be in Japanese.
-- Output must be in markdown format.
+- 出力は、日本語でなければならない。
+- 出力は、マークダウン形式でなければならない。
 
-## Example 1
+## 例 1
 
-Keywords: programming, learning, efficiency
+キーワード：プログラミング、学習、効率
 
-Title: 5 Tips for Learning Programming Efficiently
+タイトル：効率よくプログラミングを学習するための5つのヒント
 
+```
 ## 効率よくプログラミングを学習するための5つのヒント
 ### 学習目的を明確にする
 ### 適切な教材の選び方
@@ -57,6 +57,4 @@ Title: 5 Tips for Learning Programming Efficiently
 ### マイルストーンを設定して達成感を得る
 
 ## 効率的な学習成果を最大化する方法
-
-
-    `
+```

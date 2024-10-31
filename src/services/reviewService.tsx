@@ -20,13 +20,15 @@ export async function reviewBlogPost(
     }
 
     const blogPrompt = `
+    You are an excellent blog writer.
+
     ${prompt}
 
     ### user input
 
     Title: ${title}
-    keyWords(comma separated): ${keyWords}
-    ${body}
+    KeyWords(comma separated): ${keyWords}
+    Blog: ${body}
     `
 
     const completion = await openai.chat.completions.create({
