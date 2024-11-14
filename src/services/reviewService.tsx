@@ -5,11 +5,17 @@ const openai = new OpenAI({
     dangerouslyAllowBrowser: true
 })
 
+interface ReviewOptions {
+    model?: string
+    customPrompt?: string
+}
+
 export async function reviewBlogPost(
     title: string,
     keyWords: string,
     body: string,
-    prompt: string
+    prompt: string,
+    options: ReviewOptions = {}
 ) {
     if (!title && !keyWords && !body) {
         throw new Error('All inputs are empty')
@@ -22,6 +28,7 @@ export async function reviewBlogPost(
     const blogPrompt = `
     You are an excellent blog writer.
 
+    ${options.customPrompt ? `${options.customPrompt}\n\n` : ''}
     ${prompt}
 
     ### user input
@@ -42,7 +49,7 @@ export async function reviewBlogPost(
                 content: blogPrompt
             }
         ],
-        model: 'gpt-4o-mini'
+        model: options.model || 'gpt-3.5-turbo'
     })
 
     if (

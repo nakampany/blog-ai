@@ -1,10 +1,14 @@
 'use client'
 
+import { Component as ModelSelector } from '@/components/features/ModelSelector'
+import { Component as PromptInput } from '@/components/features/PromptInput'
+import { useSettings } from '@/services/settingsService'
 import ArticleIcon from '@mui/icons-material/Article'
 import ChecklistIcon from '@mui/icons-material/Checklist'
 import EditNoteIcon from '@mui/icons-material/EditNote'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import NotesIcon from '@mui/icons-material/Notes'
+import SettingsIcon from '@mui/icons-material/Settings'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import SpellcheckIcon from '@mui/icons-material/Spellcheck'
 import TitleIcon from '@mui/icons-material/Title'
@@ -17,7 +21,8 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    Typography
 } from '@mui/material'
 import Link from 'next/link'
 import type React from 'react'
@@ -41,6 +46,8 @@ const menuItems = [
 ]
 
 export const SideBar: React.FC<props> = (props) => {
+    const { settings, setCustomPrompt, setSelectedModel } = useSettings()
+
     return (
         <Drawer
             variant="temporary"
@@ -48,7 +55,7 @@ export const SideBar: React.FC<props> = (props) => {
             open={props.open}
             onClose={props.onClose}
         >
-            <Box sx={{ width: 250 }} role="presentation">
+            <Box sx={{ width: 300 }} role="presentation">
                 <List>
                     <ListItem>
                         <ListItemText primary="機能一覧" />
@@ -97,6 +104,38 @@ export const SideBar: React.FC<props> = (props) => {
                             </Link>
                         </ListItem>
                     ))}
+                </List>
+                <Divider />
+                <List>
+                    <ListItem>
+                        <ListItemIcon>
+                            <SettingsIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="設定" />
+                    </ListItem>
+                    <ListItem
+                        sx={{
+                            flexDirection: 'column',
+                            alignItems: 'stretch',
+                            gap: 2,
+                            p: 2
+                        }}
+                    >
+                        <Typography variant="subtitle2" gutterBottom>
+                            モデル選択
+                        </Typography>
+                        <ModelSelector
+                            model={settings.selectedModel}
+                            setModel={setSelectedModel}
+                        />
+                        <Typography variant="subtitle2" gutterBottom>
+                            カスタムプロンプト
+                        </Typography>
+                        <PromptInput
+                            prompt={settings.customPrompt}
+                            setPrompt={setCustomPrompt}
+                        />
+                    </ListItem>
                 </List>
             </Box>
         </Drawer>
