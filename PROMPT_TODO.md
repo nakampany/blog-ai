@@ -10,7 +10,7 @@ Strategic Chain-of-Thought（SCoT）手法を用いた各機能のプロンプ�
 - [x] RewriteShort
 - [x] RewriteLong
 - [x] CheckMistakes
-- [ ] AllGenerate
+- [x] AllGenerate
 - [ ] FreeInput
 
 ## 改善方針
