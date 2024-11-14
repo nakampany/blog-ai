@@ -3,7 +3,7 @@
 Strategic Chain-of-Thought（SCoT）手法を用いた各機能のプロンプト改善状況：
 
 - [x] TitleGeneration
-- [ ] Outline
+- [x] Outline
 - [ ] BodyText
 - [ ] LeadText
 - [ ] Conclusion
