@@ -11,8 +11,10 @@ import {
     MenuItem,
     MenuList,
     Toolbar,
-    Typography
+    Typography,
+    useTheme
 } from '@mui/material'
+import Link from 'next/link'
 import type React from 'react'
 import { useState } from 'react'
 
@@ -21,6 +23,7 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = (props) => {
+    const theme = useTheme()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
 
@@ -33,66 +36,141 @@ export const Header: React.FC<Props> = (props) => {
     }
 
     return (
-        <AppBar position="static" style={{ backgroundColor: 'gray' }}>
-            <Toolbar
-                style={{ display: 'flex', justifyContent: 'space-between' }}
-            >
-                <Box display="flex" alignItems="center">
+        <AppBar
+            position="static"
+            sx={{
+                bgcolor: 'primary.main',
+                boxShadow: theme.shadows[1]
+            }}
+        >
+            <Toolbar sx={{ justifyContent: 'space-between' }}>
+                <Box display="flex" alignItems="center" gap={2}>
                     <IconButton
                         edge="start"
                         color="inherit"
                         aria-label="menu"
                         onClick={props.onClick}
-                    >
-                        <Menu open={false} />
-                    </IconButton>
-                    <Typography variant="h6" component="div">
-                        <a
-                            href="/TitleGeneration"
-                            style={{ color: 'white', textDecoration: 'none' }}
-                        >
-                            記事執筆支援ツール
-                        </a>
-                    </Typography>
-                    <IconButton
-                        edge="end"
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={props.onClick}
+                        sx={{
+                            mr: 1,
+                            display: { xs: 'flex', md: 'none' }
+                        }}
                     >
                         <MenuIcon />
                     </IconButton>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{
+                            fontWeight: 'bold',
+                            color: 'text.primary'
+                        }}
+                    >
+                        <Link
+                            href="/TitleGeneration"
+                            style={{
+                                color: 'inherit',
+                                textDecoration: 'none'
+                            }}
+                        >
+                            記事執筆支援ツール
+                        </Link>
+                    </Typography>
                 </Box>
 
-                <Box display="flex" alignItems="center">
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    gap={3}
+                    sx={{
+                        '& > *:not(:last-child)': {
+                            display: { xs: 'none', md: 'flex' }
+                        }
+                    }}
+                >
                     <Typography
-                        style={{ marginRight: '20px', fontWeight: 'bold' }}
+                        sx={{
+                            fontWeight: 'bold',
+                            color: 'text.primary',
+                            '&:hover': {
+                                color: 'primary.light',
+                                cursor: 'pointer'
+                            }
+                        }}
                     >
                         使い方Notion
                     </Typography>
                     <Typography
-                        style={{ marginRight: '20px', fontWeight: 'bold' }}
+                        sx={{
+                            fontWeight: 'bold',
+                            color: 'text.primary',
+                            '&:hover': {
+                                color: 'primary.light',
+                                cursor: 'pointer'
+                            }
+                        }}
                     >
                         ヘルプ
                     </Typography>
                     <Typography
-                        style={{ marginRight: '20px', fontWeight: 'bold' }}
+                        sx={{
+                            fontWeight: 'bold',
+                            color: 'text.primary',
+                            '&:hover': {
+                                color: 'primary.light',
+                                cursor: 'pointer'
+                            }
+                        }}
                     >
-                        その他Notion（採用文など）
+                        その他Notion
                     </Typography>
-                    <IconButton onClick={handleMenuOpen}>
-                        <Avatar alt="User Avatar" src="" />
+                    <IconButton
+                        onClick={handleMenuOpen}
+                        sx={{
+                            ml: { xs: 0, md: 2 }
+                        }}
+                    >
+                        <Avatar
+                            alt="User Avatar"
+                            src=""
+                            sx={{
+                                width: 35,
+                                height: 35,
+                                bgcolor: 'secondary.main'
+                            }}
+                        />
                     </IconButton>
                     <Menu
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleMenuClose}
                         MenuListProps={{ 'aria-labelledby': 'profileDropdown' }}
+                        sx={{
+                            '& .MuiPaper-root': {
+                                bgcolor: 'background.paper',
+                                boxShadow: theme.shadows[3]
+                            }
+                        }}
                     >
                         <MenuList>
-                            <MenuItem disabled>aaa@example.com</MenuItem>
+                            <MenuItem
+                                disabled
+                                sx={{
+                                    color: 'text.secondary',
+                                    typography: 'body2'
+                                }}
+                            >
+                                aaa@example.com
+                            </MenuItem>
                             <Divider />
-                            <MenuItem onClick={handleMenuClose}>
+                            <MenuItem
+                                onClick={handleMenuClose}
+                                sx={{
+                                    '&:hover': {
+                                        bgcolor: 'primary.light',
+                                        color: 'common.white'
+                                    }
+                                }}
+                            >
                                 ログイン機能作りたいかも？
                             </MenuItem>
                         </MenuList>

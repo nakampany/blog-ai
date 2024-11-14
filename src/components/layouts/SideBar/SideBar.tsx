@@ -17,12 +17,14 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    Typography,
+    useTheme
 } from '@mui/material'
 import Link from 'next/link'
 import type React from 'react'
 
-interface props {
+interface Props {
     open: boolean
     onClose: () => void
 }
@@ -40,26 +42,92 @@ const menuItems = [
     { text: '自由入力', link: '/FreeInput' }
 ]
 
-export const SideBar: React.FC<props> = (props) => {
+export const SideBar: React.FC<Props> = (props) => {
+    const theme = useTheme()
+
     return (
         <Drawer
             variant="temporary"
             anchor="left"
             open={props.open}
             onClose={props.onClose}
+            sx={{
+                '& .MuiDrawer-paper': {
+                    width: { xs: '85%', sm: 280 },
+                    bgcolor: 'background.paper',
+                    borderRight: `1px solid ${theme.palette.divider}`,
+                    boxShadow: theme.shadows[3]
+                }
+            }}
+            PaperProps={{
+                elevation: 3
+            }}
         >
-            <Box sx={{ width: 250 }} role="presentation">
-                <List>
-                    <ListItem>
-                        <ListItemText primary="機能一覧" />
-                    </ListItem>
-                </List>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}
+                role="presentation"
+            >
+                <Box
+                    sx={{
+                        p: 2,
+                        bgcolor: 'primary.main',
+                        color: 'primary.contrastText'
+                    }}
+                >
+                    <Typography variant="h6" component="div">
+                        機能一覧
+                    </Typography>
+                </Box>
                 <Divider />
-                <List>
+                <List
+                    sx={{
+                        flex: 1,
+                        py: 0,
+                        '& .MuiListItemButton-root': {
+                            py: 1.5,
+                            '&:hover': {
+                                bgcolor: 'action.hover'
+                            }
+                        },
+                        '& .MuiListItemIcon-root': {
+                            color: 'primary.main',
+                            minWidth: 40
+                        },
+                        '& .MuiListItemText-primary': {
+                            fontSize: '0.95rem',
+                            fontWeight: 500
+                        }
+                    }}
+                >
                     {menuItems.map((item) => (
-                        <ListItem key={item.text} disablePadding sx={{ pl: 2 }}>
-                            <Link href={item.link} passHref>
-                                <ListItemButton>
+                        <ListItem key={item.text} disablePadding>
+                            <Link
+                                href={item.link}
+                                passHref
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                    width: '100%'
+                                }}
+                            >
+                                <ListItemButton
+                                    sx={{
+                                        px: 2,
+                                        '&:hover': {
+                                            '& .MuiListItemIcon-root': {
+                                                color: 'primary.dark'
+                                            },
+                                            '& .MuiListItemText-primary': {
+                                                color: 'primary.dark'
+                                            }
+                                        }
+                                    }}
+                                >
                                     <ListItemIcon>
                                         {item.link === '/AllGenerate' && (
                                             <MenuBookIcon />
