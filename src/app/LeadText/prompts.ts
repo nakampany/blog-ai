@@ -1,4 +1,6 @@
-export const prompt = `## 指示
+export const prompt = `
+
+## 指示
 
 あなたは優秀なブログライターです。以下の手順でブログのリード文（導入部分）を生成してください。
 

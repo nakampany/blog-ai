@@ -54,7 +54,6 @@ export const prompt = `
 - 具体例を効果的に活用すること
 
 ## 出力形式
-\`\`\`markdown
 # [タイトル]
 
 ## はじめに
