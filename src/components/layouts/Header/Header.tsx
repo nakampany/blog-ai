@@ -1,11 +1,11 @@
 'use client'
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
     AppBar,
     Avatar,
     Box,
-    Divider,
     IconButton,
     Menu,
     MenuItem,
@@ -14,12 +14,42 @@ import {
     Typography,
     useTheme
 } from '@mui/material'
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import type React from 'react'
 import { useState } from 'react'
 
 interface Props {
-    onClick: () => void
+    onMenuClick: () => void
+}
+
+const menuVariants = {
+    hidden: {
+        opacity: 0,
+        y: -5,
+        transition: {
+            duration: 0.2
+        }
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.2
+        }
+    }
+}
+
+const buttonVariants = {
+    hover: {
+        scale: 1.05,
+        transition: {
+            duration: 0.2
+        }
+    },
+    tap: {
+        scale: 0.95
+    }
 }
 
 export const Header: React.FC<Props> = (props) => {
@@ -37,145 +67,148 @@ export const Header: React.FC<Props> = (props) => {
 
     return (
         <AppBar
-            position="static"
+            position="sticky"
+            component={motion.header}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
             sx={{
                 bgcolor: 'primary.main',
                 boxShadow: theme.shadows[1]
             }}
         >
-            <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Box display="flex" alignItems="center" gap={2}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={props.onClick}
-                        sx={{
-                            mr: 1,
-                            display: { xs: 'flex', md: 'none' }
-                        }}
+            <Toolbar
+                sx={{
+                    justifyContent: 'space-between',
+                    height: 64,
+                    px: { xs: 2, sm: 4 }
+                }}
+            >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <motion.div
+                        whileHover="hover"
+                        whileTap="tap"
+                        variants={buttonVariants}
                     >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{
-                            fontWeight: 'bold',
-                            color: 'text.primary'
-                        }}
-                    >
-                        <Link
-                            href="/TitleGeneration"
-                            style={{
-                                color: 'inherit',
-                                textDecoration: 'none'
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            onClick={props.onMenuClick}
+                            sx={{ mr: 2 }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </motion.div>
+                    <Link href="/" passHref style={{ textDecoration: 'none' }}>
+                        <Typography
+                            variant="h6"
+                            component={motion.div}
+                            whileHover={{
+                                scale: 1.02,
+                                transition: { duration: 0.2 }
+                            }}
+                            sx={{
+                                color: 'primary.contrastText',
+                                fontWeight: 700,
+                                cursor: 'pointer'
                             }}
                         >
-                            記事執筆支援ツール
-                        </Link>
-                    </Typography>
+                            Blog AI
+                        </Typography>
+                    </Link>
                 </Box>
 
-                <Box
-                    display="flex"
-                    alignItems="center"
-                    gap={3}
-                    sx={{
-                        '& > *:not(:last-child)': {
-                            display: { xs: 'none', md: 'flex' }
-                        }
-                    }}
-                >
-                    <Typography
-                        sx={{
-                            fontWeight: 'bold',
-                            color: 'text.primary',
-                            '&:hover': {
-                                color: 'primary.light',
-                                cursor: 'pointer'
-                            }
-                        }}
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <motion.div
+                        whileHover="hover"
+                        whileTap="tap"
+                        variants={buttonVariants}
                     >
-                        使い方Notion
-                    </Typography>
-                    <Typography
-                        sx={{
-                            fontWeight: 'bold',
-                            color: 'text.primary',
-                            '&:hover': {
-                                color: 'primary.light',
-                                cursor: 'pointer'
-                            }
-                        }}
-                    >
-                        ヘルプ
-                    </Typography>
-                    <Typography
-                        sx={{
-                            fontWeight: 'bold',
-                            color: 'text.primary',
-                            '&:hover': {
-                                color: 'primary.light',
-                                cursor: 'pointer'
-                            }
-                        }}
-                    >
-                        その他Notion
-                    </Typography>
-                    <IconButton
-                        onClick={handleMenuOpen}
-                        sx={{
-                            ml: { xs: 0, md: 2 }
-                        }}
-                    >
-                        <Avatar
-                            alt="User Avatar"
-                            src=""
-                            sx={{
-                                width: 35,
-                                height: 35,
-                                bgcolor: 'secondary.main'
-                            }}
-                        />
-                    </IconButton>
-                    <Menu
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleMenuClose}
-                        MenuListProps={{ 'aria-labelledby': 'profileDropdown' }}
-                        sx={{
-                            '& .MuiPaper-root': {
-                                bgcolor: 'background.paper',
-                                boxShadow: theme.shadows[3]
-                            }
-                        }}
-                    >
-                        <MenuList>
-                            <MenuItem
-                                disabled
-                                sx={{
-                                    color: 'text.secondary',
-                                    typography: 'body2'
-                                }}
-                            >
-                                aaa@example.com
-                            </MenuItem>
-                            <Divider />
-                            <MenuItem
-                                onClick={handleMenuClose}
-                                sx={{
-                                    '&:hover': {
-                                        bgcolor: 'primary.light',
-                                        color: 'common.white'
-                                    }
-                                }}
-                            >
-                                ログイン機能作りたいかも？
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
+                        <IconButton
+                            onClick={handleMenuOpen}
+                            size="small"
+                            aria-controls={open ? 'account-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                        >
+                            <Avatar sx={{ width: 32, height: 32 }}>
+                                <AccountCircleIcon />
+                            </Avatar>
+                        </IconButton>
+                    </motion.div>
                 </Box>
+
+                <AnimatePresence>
+                    {open && (
+                        <Menu
+                            id="account-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleMenuClose}
+                            onClick={handleMenuClose}
+                            transformOrigin={{
+                                horizontal: 'right',
+                                vertical: 'top'
+                            }}
+                            anchorOrigin={{
+                                horizontal: 'right',
+                                vertical: 'bottom'
+                            }}
+                            PaperProps={{
+                                component: motion.div,
+                                variants: menuVariants,
+                                initial: 'hidden',
+                                animate: 'visible',
+                                exit: 'hidden',
+                                elevation: 3,
+                                sx: {
+                                    mt: 1,
+                                    minWidth: 180,
+                                    borderRadius: 1,
+                                    bgcolor: 'background.paper'
+                                }
+                            }}
+                        >
+                            <MenuList>
+                                <MenuItem
+                                    component={motion.div}
+                                    whileHover={{
+                                        backgroundColor:
+                                            theme.palette.action.hover,
+                                        x: 4,
+                                        transition: { duration: 0.2 }
+                                    }}
+                                >
+                                    プロフィール
+                                </MenuItem>
+                                <MenuItem
+                                    component={motion.div}
+                                    whileHover={{
+                                        backgroundColor:
+                                            theme.palette.action.hover,
+                                        x: 4,
+                                        transition: { duration: 0.2 }
+                                    }}
+                                >
+                                    設定
+                                </MenuItem>
+                                <MenuItem
+                                    component={motion.div}
+                                    whileHover={{
+                                        backgroundColor:
+                                            theme.palette.action.hover,
+                                        x: 4,
+                                        transition: { duration: 0.2 }
+                                    }}
+                                >
+                                    ログアウト
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    )}
+                </AnimatePresence>
             </Toolbar>
         </AppBar>
     )
