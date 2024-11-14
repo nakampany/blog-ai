@@ -81,10 +81,7 @@ export const Header: React.FC<Props> = (props) => {
                         その他Notion（採用文など）
                     </Typography>
                     <IconButton onClick={handleMenuOpen}>
-                        <Avatar
-                            alt="User Avatar"
-                            src=""
-                        />
+                        <Avatar alt="User Avatar" src="" />
                     </IconButton>
                     <Menu
                         anchorEl={anchorEl}

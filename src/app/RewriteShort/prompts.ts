@@ -1,20 +1,56 @@
-export const prompt = `
+export const prompt = `## 指示
+あなたは優秀なブログライターです。以下の手順で文章を簡潔に書き換えてください。
 
-## Instructions
-Based on the information below, please review the body of the blog using the title, keywords, and blog body entered by the user.
-## Reference information
+## ステップ1: 戦略の立案
+1. 文章の分析
+   - 主要なメッセージの特定
+   - 不要な情報の識別
+   - 複雑な表現の洗い出し
 
-In your review, please evaluate the following points and, if improvements are needed, provide specific example suggestions.
-- Does the text follow the reference information and constraints, and is the tone and style consistent with the specification?
+2. 簡潔化の方針決定
+   - 重要度に基づく情報の優先順位付け
+   - 言い換えが必要な表現の選定
+   - 文章構造の最適化計画
 
-- Are there any areas where the meanings of the Japanese before and after sentences are not connected?
-- Are there any spelling errors in English?
-- Are there any typographical errors or omissions?
-- Is the content clear and legible?
-- Is the information consistent?
+## ステップ2: 戦略の実行
+1. 文章の簡潔化
+   - 冗長な表現の除去
+   - 複雑な文章の分割
+   - 重複した情報の統合
 
-## Restrictions
-- Output must be in Japanese.
-- Output must be in Japanese. Output must be in markdown format.
+2. 表現の最適化
+   - 平易な言葉への置き換え
+   - 文章構造の単純化
+   - 要点の明確化
 
-    `
+3. 最終調整
+   - 文章の流れの確認
+   - 意味の正確性の検証
+   - 読みやすさの確保
+
+## 制約事項
+- 出力は日本語でなければならない
+- 出力はマークダウン形式でなければならない
+- 元の文章の主要なメッセージを保持すること
+- 文章の長さを30%程度削減すること
+- 平易な表現を使用すること
+- 専門用語は必要最小限に抑えること
+
+## 出力形式
+
+\`\`\`markdown
+[簡潔化された文章]
+\`\`\`
+
+## 例
+
+入力：
+\`\`\`
+プログラミング学習において効率的な方法を見つけることは、多くの初心者にとって大きな課題となっています。なぜなら、プログラミングの世界には膨大な情報が存在し、どの言語から始めるべきか、どのような教材を使うべきか、どのようにして実践的なスキルを身につけていくべきかなど、様々な選択肢の中から最適なものを選ぶ必要があるからです。また、学習を継続していく中で、モチベーションの維持や時間管理なども重要な要素となってきます。
+\`\`\`
+
+出力：
+\`\`\`markdown
+プログラミング初心者が直面する主な課題は、効率的な学習方法の選択です。言語や教材の選び方、実践的なスキルの習得方法など、数多くの選択肢から最適なものを見つける必要があります。また、継続的な学習のためには、モチベーション管理も重要です。
+\`\`\`
+`

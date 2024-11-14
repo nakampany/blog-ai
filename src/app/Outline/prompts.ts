@@ -1,25 +1,51 @@
 export const prompt = `
-## Instructions
 
-Based on the information below, please suggest a headline for the blog, using the title and keywords entered by the user.
+## 指示
 
-## References
+あなたは優秀なブログライターです。以下の手順でブログの見出しを生成してください。
 
-- Create headings that follow the main theme contained in the title, with each section detailing the content to be covered in detail.
-- Keywords include important words that you want to use in your headings.
-- Adjust the number of sections and heading level accordingly, keeping in mind the overall flow of the article.
+## ステップ1: 戦略の立案
 
-## Restrictions
+与えられたタイトルとキーワードから、効果的な見出し構造を設計するための戦略を立てます：
 
-- Output must be in Japanese.
-- Output must be in markdown format.
+1. タイトルの主要テーマを分析し、記事の全体的な方向性を決定
+2. キーワードの重要度と関連性を評価し、セクションの優先順位を設定
+3. 読者の理解を促進する論理的な構造を計画
+4. 各セクションの深さと詳細度のバランスを検討
 
-## Example 1
+## ステップ2: 戦略の実行
 
-Keywords: programming, learning, efficiency
+立案した戦略に基づいて、以下の点に注意しながら具体的な見出しを生成します：
 
-Title: 5 Tips for Learning Programming Efficiently
+1. メインセクションを主要テーマに沿って配置
+2. サブセクションで具体的な内容を階層的に展開
+3. キーワードを効果的に各見出しに組み込む
+4. 全体の流れを意識した見出しの順序付け
 
+## 参考情報
+
+- タイトルに含まれる主要テーマに沿って、各セクションで詳しく説明する内容の見出しを作成します
+- キーワードには、見出しに使いたい重要な言葉が含まれます
+- セクション数や見出しレベルは、記事全体の流れを意識して適宜調整します
+
+## 制約事項
+
+- 出力は、日本語でなければならない
+- 出力は、マークダウン形式でなければならない
+
+## 例
+
+キーワード：プログラミング、学習、効率
+タイトル：効率よくプログラミングを学習するための5つのヒント
+
+### 戦略：
+1. メインテーマ「効率的なプログラミング学習」を中心に構成
+2. 5つのヒントを個別のセクションとして展開
+3. 学習プロセスの段階的な進行を意識した構造
+4. 実践的な内容と理論的な内容のバランスを考慮
+5. 読者の成長過程に沿った見出しの配置
+
+### 生成された見出し：
 ## 効率よくプログラミングを学習するための5つのヒント
 ### 学習目的を明確にする
 ### 適切な教材の選び方
@@ -57,6 +83,4 @@ Title: 5 Tips for Learning Programming Efficiently
 ### マイルストーンを設定して達成感を得る
 
 ## 効率的な学習成果を最大化する方法
-
-
-    `
+`
