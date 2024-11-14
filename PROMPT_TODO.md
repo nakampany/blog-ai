@@ -8,7 +8,7 @@ Strategic Chain-of-Thought（SCoT）手法を用いた各機能のプロンプ�
 - [x] LeadText
 - [x] Conclusion
 - [x] RewriteShort
-- [ ] RewriteLong
+- [x] RewriteLong
 - [ ] CheckMistakes
 - [ ] AllGenerate
 - [ ] FreeInput
