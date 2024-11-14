@@ -1,3 +1,7 @@
+'use client'
+
+import { Button, Stack, Typography } from '@mui/material'
+import { motion } from 'framer-motion'
 import React from 'react'
 
 interface Props {
@@ -6,28 +10,71 @@ interface Props {
     clearReviewHistory: () => void
 }
 
+const buttonVariants = {
+    initial: { opacity: 0, y: 10 },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: 'spring',
+            stiffness: 300,
+            damping: 30
+        }
+    }
+}
+
 export const Component = (props: Props) => {
     const { copyToClipboard, copySuccess, clearReviewHistory } = props
     return (
-        <div className="mt-4">
-            <button
-                type="button"
-                className="rounded-md bg-green-600 px-3 py-2 font-semibold text-white hover:bg-green-500 focus:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                onClick={copyToClipboard}
+        <motion.div
+            variants={buttonVariants}
+            initial="initial"
+            animate="animate"
+        >
+            <Stack
+                direction="row"
+                spacing={2}
+                alignItems="center"
+                sx={{ mt: 4 }}
             >
-                コピー
-            </button>
+                <Button
+                    variant="contained"
+                    color="success"
+                    onClick={copyToClipboard}
+                    sx={{
+                        fontWeight: 600,
+                        '&:hover': {
+                            backgroundColor: 'success.light'
+                        }
+                    }}
+                >
+                    コピー
+                </Button>
+                <Button
+                    variant="contained"
+                    color="error"
+                    onClick={clearReviewHistory}
+                    sx={{
+                        fontWeight: 600,
+                        '&:hover': {
+                            backgroundColor: 'error.light'
+                        }
+                    }}
+                >
+                    履歴を削除
+                </Button>
+            </Stack>
             {copySuccess && (
-                <p className="text-green-600 mt-2">{copySuccess}</p>
+                <Typography
+                    color="success.main"
+                    sx={{ mt: 2, fontWeight: 500 }}
+                    component={motion.p}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                >
+                    {copySuccess}
+                </Typography>
             )}
-
-            <button
-                type="button"
-                className="ml-4 rounded-md bg-red-600 px-3 py-2 font-semibold text-white hover:bg-red-500 focus:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                onClick={clearReviewHistory}
-            >
-                履歴を削除
-            </button>
-        </div>
+        </motion.div>
     )
 }
