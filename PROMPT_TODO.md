@@ -6,7 +6,7 @@ Strategic Chain-of-Thought（SCoT）手法を用いた各機能のプロンプ�
 - [x] Outline
 - [x] BodyText
 - [x] LeadText
-- [ ] Conclusion
+- [x] Conclusion
 - [ ] RewriteShort
 - [ ] RewriteLong
 - [ ] CheckMistakes
