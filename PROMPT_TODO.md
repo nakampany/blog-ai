@@ -5,7 +5,7 @@ Strategic Chain-of-Thought（SCoT）手法を用いた各機能のプロンプ�
 - [x] TitleGeneration
 - [x] Outline
 - [x] BodyText
-- [ ] LeadText
+- [x] LeadText
 - [ ] Conclusion
 - [ ] RewriteShort
 - [ ] RewriteLong
