@@ -44,13 +44,7 @@ export default function Home() {
                     <br />
                     1. プロンプトを頑張り、実用的なものにする
                     <br />
-                    2. デザインを考え、レイアウトを整える
-                    <br />
-                    3. 事前学習機能を実装
-                    <br />
-                    4. ローカルストレージのバグを修正
-                    <br />
-                    5. ログイン・認証機能
+                    2. Supabaseでログイン・認証機能を実装
                 </Typography>
                 <Button
                     href="/TitleGeneration"
